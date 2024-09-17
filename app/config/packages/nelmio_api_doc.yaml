@@ -1,0 +1,20 @@
+nelmio_api_doc:
+    documentation:
+        servers:
+            - url: http://localhost/safe
+              description: API over HTTP
+        info:
+            title: Advertising and streaming
+            description: This is an api where you can buy advertising banners!
+            version: 1.0.0
+            x-build: #CommitHash
+        components:
+            securitySchemes:
+                Bearer:
+                    type: http
+                    scheme: bearer
+                    bearerFormat: JWT
+        security:
+            - Bearer: []
+        path_patterns:
+            - '^/(?!/_error).*'

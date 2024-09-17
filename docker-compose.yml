@@ -1,6 +1,24 @@
 version: '3.8'
 services:
-  mysql:
+  php:
+    build: ./docker/php
+    volumes:
+      - ./app:/var/www/symfony
+    working_dir: /var/www/symfony
+    networks:
+      - symfony
+    command: bash -c "composer install && php-fpm"
+    container_name: php-fpm
+  nginx:
+    build: ./docker/nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./app:/var/www/symfony
+      - ./docker/nginx:/etc/nginx/conf.d
+    networks:
+      - symfony
+  database:
     image: library/mysql:8.0
     restart: always
     ports:
@@ -10,5 +28,9 @@ services:
       MYSQL_DATABASE: leboncode
     volumes:
       - admin-leboncode:/var/lib/mysql
+    networks:
+      - symfony
+networks:
+  symfony:
 volumes:
   admin-leboncode:

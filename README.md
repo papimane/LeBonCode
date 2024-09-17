@@ -9,7 +9,10 @@ Vous avez deux heures pour effectuer ce test, bien entendu nous ne pourrons pas 
 Avant de commencer, faites un fork du projet. C'est ce fork qui servira de rendu pour ce test.
 
 ## Advert
-
+Pour démarrer le projet installer Make:
+- Exécuter la command make init pour lancer le projet
+- Accéder à la [documentation](http://localhost/api/doc)
+- Exécuter la command make test pour lancer les tests
 #### Create advert `POST`
 Un utilisateur pourra ajouter un produit à vendre (`/advert`) avec ces informations :
 - Titre de l'annonce
